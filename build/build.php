@@ -8,6 +8,9 @@
 	#
 
 	$out = array();
+	$reverse_out = array();
+
+	$i = 0;
 
 	foreach ($d as $row){
 		list($key) = explode('.', $row['image']);
@@ -19,15 +22,20 @@
 			$row['sheet_x'],
 			$row['sheet_y'],
 		);
+
+		$reverse_out[$row['short_name']] = calc_bytes($row['unified']);
+
 		if ($row['text']) $out[$key][] = $row['text'];
 		if (count($row['variations'])){
 			foreach ($row['variations'] as $var){
 				array_unshift($out[$key][0], calc_bytes($var));
 			}
 		}
+		$i++;
 	}
 
 	$json = pretty_print_json($out);
+	$reverse_json = pretty_print_json($reverse_out);
 
 
 	#
@@ -67,8 +75,7 @@
 	#
 
 	$template = file_get_contents('emoji.js.template');
-	echo str_replace(array('#SHEET-SIZE#', '#DATA#', '#DATA2#'), array($sheet_size, $json, $json2), $template);
-
+	echo str_replace(array('#SHEET-SIZE#', '#DATA#', '#DATA2#', '#DATA3#'), array($sheet_size, $json, $json2, $reverse_json), $template);
 
 	#
 	# turn 0+ codepoints into a JS string

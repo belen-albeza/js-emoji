@@ -77,13 +77,13 @@ function emoji(){}
 		if (emoji.inits.emoticons) return;
 		emoji.init_colons(); // we require this for the emoticons map
 		emoji.inits.emoticons = 1;
-		
+
 		var a = [];
 		emoji.map.emoticons = {};
 		for (var i in emoji.emoticons_data){
 			// because we never see some characters in our text except as entities, we must do some replacing
 			var emoticon = i.replace(/\&/g, '&amp;').replace(/\</g, '&lt;').replace(/\>/g, '&gt;');
-			
+
 			if (!emoji.map.colons[emoji.emoticons_data[i]]) continue;
 
 			emoji.map.emoticons[emoticon] = emoji.map.colons[emoji.emoticons_data[i]];
@@ -169,6 +169,7 @@ function emoji(){}
 	emoji.sheet_size = #SHEET-SIZE#;
 	emoji.data = #DATA#;
 	emoji.emoticons_data = #DATA2#;
+	emoji.reverse_data = #DATA3#;
 
 if (typeof exports === 'object') {
   module.exports = emoji;
