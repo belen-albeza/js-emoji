@@ -23,7 +23,9 @@
 			$row['sheet_y'],
 		);
 
-		$reverse_out[$row['short_name']] = calc_bytes($row['unified']);
+		foreach($row['short_names'] as $name) {
+			$reverse_out[$name] = calc_bytes($row['unified']);
+		}
 
 		if ($row['text']) $out[$key][] = $row['text'];
 		if (count($row['variations'])){
