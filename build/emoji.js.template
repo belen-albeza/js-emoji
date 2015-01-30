@@ -177,7 +177,7 @@ function emoji(){}
 	emoji.sheet_size = #SHEET-SIZE#;
 	emoji.data = #DATA#;
 	emoji.emoticons_data = #DATA2#;
-	emoji.reverse_data = #DATA3#;
+	emoji.reversed_data = #DATA3#;
 
 if (typeof exports === 'object') {
   module.exports = emoji;

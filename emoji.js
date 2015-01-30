@@ -1070,7 +1070,7 @@ function emoji(){}
 		":o)":"monkey_face",
 		"D:":"anguished"
 	};
-	emoji.reverse_data = {
+	emoji.reversed_data = {
 		"copyright":"\u00A9",
 		"registered":"\u00AE",
 		"bangbang":"\u203C",
