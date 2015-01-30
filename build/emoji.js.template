@@ -37,6 +37,14 @@ function emoji(){}
 			return val ? emoji.replacement(val, idx, ':') : m;
 		});
 	};
+	emoji.reverse_colons = function(str) {
+		emoji.init_colons();
+		return str.replace(emoji.rx_colons, function (m) {
+			var key = m.replace(/:/g, '');
+			var val = emoji.reversed_data[key];
+			return val || m;
+		});
+	};
 	emoji.replace_unified = function(str){
 		emoji.init_unified();
 		return str.replace(emoji.rx_unified, function(m){
